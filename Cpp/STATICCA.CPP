@@ -1,0 +1,25 @@
+/* static member function define a class clac having 2 static member function
+squar and sum call function into main function and print ans.*/
+#include<iostream.h>
+#include<conio.h>
+class calc
+{
+	public:
+		static int square(int n)
+		{
+			return(n*n);
+		}
+		static int sum (int a,int b)
+		{
+			return(a+b);
+		}
+};
+void main()
+{
+	clrscr();
+	int sq=calc::square(5);
+	int sm=calc::sum(10,1589);
+	cout<<"\n\t Square:"<<sq;
+	cout<<"\n\t Sum:"<<sm;
+	getch();
+}

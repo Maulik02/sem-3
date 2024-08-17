@@ -1,0 +1,32 @@
+#include<iostream.h>
+#include<conio.h>
+#include<string.h>
+class book
+{
+	private:
+		char title[20];
+		float price;
+	public:
+		book()
+		{
+			cout<<"\n\t Enter book title :";
+			cin>>title;
+			cout<<"\n\t Enter book price :";
+			cin>>price;
+		}
+		void dis()
+		{
+			cout<<"\n\t Title of the book :"<<title;
+			cout<<"\n\t Price of the book :"<<price;
+		}
+};
+void main()
+{
+	clrscr();
+	book b1,b2;
+	cout<<"\n Information of book 1 :";
+	b1.dis();
+	cout<<"\n\n Information of book 2 :";
+	b2.dis();
+	getch();
+}

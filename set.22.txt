@@ -1,0 +1,271 @@
+SQL> create table employee
+  2  (
+  3  emp_id varchar2(10) primary key,
+  4  emp_name varchar2(10),
+  5  birth_date date,
+  6  gender varchar2(6),
+  7  dept_no number(4) references department(dept_no),
+  8  address varchar2(10),
+  9  designation varchar2(10) check(designation in ('manager','clerk','leader','analyst','designer','coder','tester')),
+ 10  salary number(5) check(salary>0),
+ 11  experience varchar2(10),
+ 12  email varchar2(15) check(email like '%@%.%')
+ 13  );
+
+Table created.
+
+
+SQL> insert into employee
+  2  values('&eid','&enm','&bdate','&gen',&dno,'&add','&desi',&sal,&exp,'&email');
+Enter value for eid: 101
+Enter value for enm: Maulik
+Enter value for bdate: 02-jan-2005
+Enter value for gen: Male
+Enter value for dno: 10
+Enter value for add: Rajkot
+Enter value for desi: coder
+Enter value for sal: 90000
+Enter value for exp: 8
+Enter value for email: maulikcmb@gmail.com
+old   2: values('&eid','&enm','&bdate','&gen',&dno,'&add','&desi',&sal,'&exp','&email')
+new   2: values('101','Parth','20-apr-2001','Male',10,'Rajkot','coder',90000,'8','parth@gmail.com')
+
+1 row created.
+
+
+SQL> /
+Enter value for eid: E2000
+Enter value for enm: AKaranA
+Enter value for bdate: 16-jan-2001
+Enter value for gen: Male
+Enter value for dno: 20
+Enter value for add: Surat
+Enter value for desi: designer
+Enter value for sal: 3000
+Enter value for exp: 2
+Enter value for email: karan@gmail.com
+old   2: values('&eid','&enm','&bdate','&gen',&dno,'&add','&desi',&sal,'&exp','&email')
+new   2: values('E2000','AnandA','16-sep-2001','Male',20,'Surat','designer',3000,'2','anand@gmail.com')
+
+1 row created.
+
+
+SQL> /
+Enter value for eid: E303
+Enter value for enm: Malay
+Enter value for bdate: 1-jan-2003
+Enter value for gen: Male
+Enter value for dno: 30
+Enter value for add: Atkot
+Enter value for desi: manager
+Enter value for sal: 4000
+Enter value for exp: 0
+Enter value for email: malay@gmail.com
+old   2: values('&eid','&enm','&bdate','&gen',&dno,'&add','&desi',&sal,'&exp','&email')
+new   2: values('E303','Dhrumil','1-oct-2003','Male',30,'Atkot','manager',4000,'0','dhru@gmail.com')
+
+1 row created.
+
+
+SQL> /
+Enter value for eid: E404
+Enter value for enm: Nikunj
+Enter value for bdate: 4-dec-2001
+Enter value for gen: Male
+Enter value for dno: 40
+Enter value for add: Ahmedabad
+Enter value for desi: leader
+Enter value for sal: 60000
+Enter value for exp: 3
+Enter value for email: nik@gmail.com
+old   2: values('&eid','&enm','&bdate','&gen',&dno,'&add','&desi',&sal,'&exp','&email')
+new   2: values('E404','Nikunj','4-dec-2001','Male',40,'Ahmedabad','leader',60000,'3','nik@gmail.com')
+
+1 row created.
+
+
+SQL> /
+Enter value for eid: E503
+Enter value for enm: Vanshi
+Enter value for bdate: 31-jan-1999
+Enter value for gen: female
+Enter value for dno: 50
+Enter value for add: Surat
+Enter value for desi: analyst
+Enter value for sal: 40000
+Enter value for exp: 8
+Enter value for email: vanshi@gmail.com
+old   2: values('&eid','&enm','&bdate','&gen',&dno,'&add','&desi',&sal,'&exp','&email')
+new   2: values('E503','Piya','31-mar-1999','female',50,'Surat','analyst',40000,'8','piya@gmail.com')
+
+1 row created.
+
+
+SQL> alter table department add unique(dept_name);
+
+Table altered.
+
+
+SQL> desc employee;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_ID                                    NOT NULL VARCHAR2(10)
+ EMP_NAME                                           VARCHAR2(10)
+ BIRTH_DATE                                         DATE
+ GENDER                                             VARCHAR2(6)
+ DEPT_NO                                            NUMBER(4)
+ ADDRESS                                            VARCHAR2(10)
+ DESIGNATION                                        VARCHAR2(10)
+ SALARY                                             NUMBER(5)
+ EXPERIENCE                                         VARCHAR2(10)
+ EMAIL                                              VARCHAR2(15)
+
+
+SQL> select * from EMPLOYEE order by emp_name;
+
+EMP_ID     EMP_NAME   BIRTH_DAT GENDER    DEPT_NO ADDRESS    DESIGNATIO         
+---------- ---------- --------- ------ ---------- ---------- ----------         
+    SALARY EXPERIENCE EMAIL                                                     
+---------- ---------- ---------------                                           
+E2000      AKaranA     16-JAN-01 Male           20 Surat      designer           
+      3000 2          karan@gmail.com                                           
+                                                                                
+E303       Maulik    02-JAN-05 Male           30 Atkot      manager            
+      4000 0          maulikcmb@gmail.com                                            
+                                                                                
+E404       Nikunj     04-DEC-01 Male           40 Ahmedabad  leader             
+     60000 3          nik@gmail.com                                             
+                                                                                
+
+EMP_ID     EMP_NAME   BIRTH_DAT GENDER    DEPT_NO ADDRESS    DESIGNATIO         
+---------- ---------- --------- ------ ---------- ---------- ----------         
+    SALARY EXPERIENCE EMAIL                                                     
+---------- ---------- ---------------                                           
+101        Maulik      02-JAN-05 Male           50 Rajkot     coder              
+     90000 8          parth@gmail.com                                           
+                                                                                
+E503       Vanshi       31-JAN-99 female         50 Surat      analyst            
+     40000 8          vanshi@gmail.com                                            
+                                                                                
+10         Malay   22-JAN-00 female            Amreli     coder              
+      4000 1          malay@gmail.com                                           
+                                                                                
+
+6 rows selected.
+
+
+SQL> delete from department where location='AH';
+
+1 row deleted.
+
+
+SQL> select * from EMPLOYEE where gender='female';
+
+EMP_ID     EMP_NAME   BIRTH_DAT GENDER    DEPT_NO ADDRESS    DESIGNATIO         
+---------- ---------- --------- ------ ---------- ---------- ----------         
+    SALARY EXPERIENCE EMAIL                                                     
+---------- ---------- ---------------                                           
+E503       Vanshi       31-JAN-99 female         50 Surat      analyst            
+     40000 8          vanshi@gmail.com                                            
+                                                                                
+10         Malay   22-JAN-00 female            Amreli     coder              
+      4000 1          malay@gmail.com                                           
+                                                                                
+
+SQL> select d.dept_name,e.emp_name from department d, employee e where d.dept_no=e.dept_no;
+
+DEPT_NAME  EMP_NAME                                                             
+---------- ----------                                                           
+HR         AKaranA                                                               
+Production Malay                                                              
+Sales      Nikunj                                                               
+IT         Vanshi                                                                 
+IT         Maulik                                                                
+
+
+SQL> select * from EMPLOYEE where salary between 2000 and 5000;
+
+EMP_ID     EMP_NAME   BIRTH_DAT GENDER    DEPT_NO ADDRESS    DESIGNATIO         
+---------- ---------- --------- ------ ---------- ---------- ----------         
+    SALARY EXPERIENCE EMAIL                                                     
+---------- ---------- ---------------                                           
+E2000      AKaranA     16-JAN-01 Male           20 Surat      designer           
+      3000 2          karan@gmail.com                                           
+                                                                                
+E303       Maulik    01-OCT-03 Male           30 Atkot      manager            
+      4000 0          maulikcmb@gmail.com                                            
+                                                                                
+10         Malay   22-JAN-00 female            Amreli     coder              
+      4000 1          malay@gmail.com                                           
+                                                                                
+
+SQL> select emp_name,designation from employee where gender='female' order by emp_name desc;
+
+EMP_NAME   DESIGNATIO                                                           
+---------- ----------                                                           
+Malay   coder                                                                
+Vanshi       analyst                                                              
+
+
+SQL> select emp_name from employee where emp_name like'A%A';
+
+EMP_NAME                                                                        
+----------                                                                      
+ AKaranA                                                                         
+
+
+SQL> select emp_name,salary from employee where salary=(select min(salary) from employee);
+
+EMP_NAME       SALARY                                                           
+---------- ----------                                                           
+AKaranA           3000                                                           
+
+
+SQL> select d.dept_name,e.emp_name,e.salary+(e.salary*10)/100 from department d,employee e where d.dept_no=e.dept_no and d.dept_name='IT';
+
+DEPT_NAME  EMP_NAME   E.SALARY+(E.SALARY*10)/100                                
+---------- ---------- --------------------------                                
+IT         Maulik                           99000                                
+IT         Vanshi                            44000                                
+
+
+SQL> select count(dept_name) from department where dept_name='IT';
+
+COUNT(DEPT_NAME)                                                                
+----------------                                                                
+               1                                                                
+
+
+SQL> select * from employee where birth_date like '%SEP%';
+
+EMP_ID     EMP_NAME   BIRTH_DAT GENDER    DEPT_NO ADDRESS    DESIGNATIO         
+---------- ---------- --------- ------ ---------- ---------- ----------         
+    SALARY EXPERIENCE EMAIL                                                     
+---------- ---------- ---------------                                           
+E2000      AKaranA     18-JAN-01 Male           20 Surat      designer           
+      3000 2          anand@gmail.com                                           
+                                                                                
+10         Malay   27-JAN-00 female            Amreli     coder              
+      4000 1          malay@gmail.com                                           
+                                                                                
+
+SQL> select * from employee where experience<1;
+
+EMP_ID     EMP_NAME   BIRTH_DAT GENDER    DEPT_NO ADDRESS    DESIGNATIO         
+---------- ---------- --------- ------ ---------- ---------- ----------         
+    SALARY EXPERIENCE EMAIL                                                     
+---------- ---------- ---------------                                           
+E303       Maulik    02-JAN-05 Male           30 Atkot      manager            
+      4000 0          maulikcmb@gmail.com                                            
+                                                                                
+
+SQL> select d.dept_name,e.emp_name,e.experience from department d, employee e where d.dept_no=e.dept_no and e.experience>5;
+
+DEPT_NAME  EMP_NAME   EXPERIENCE                                                
+---------- ---------- ----------                                                
+IT         Maulik      8                                                         
+IT         Vanshi       8                                                         
+
+
+
+SQL> spool off;

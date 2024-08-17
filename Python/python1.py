@@ -1,0 +1,7 @@
+a=int(input("Enter Value:"))
+b=int(input("Enter Value:"))
+print("Value Sum:",a+b)
+print("Value sub:",a-b)
+print("Value Mul:",a*b)
+print("Value Div:",a/b)
+print("Value Mod:",a%b)

@@ -1,0 +1,29 @@
+/*difine a clss demo having static member function count and call function
+into main function */
+#include<iostream.h>
+#include<conio.h>
+class demo
+{
+	private:
+		static int c;
+	public:
+		void count()
+		{
+			c++;
+		}
+		void display()
+		{
+			cout<<"\n\t Value c:"<<c;
+		}
+};
+int demo::c=0;
+void main()
+{
+	clrscr();
+	demo d1,d2,d3;
+	d1.count();
+	d2.count();
+	d3.count();
+	d3.display();
+	getch();
+}

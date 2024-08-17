@@ -1,0 +1,27 @@
+#include<iostream.h>
+#include<conio.h>
+int sum(int a,int b)
+{
+	return a+b;
+}
+float sum(float a,float b)
+{
+	return a+b;
+}
+float sum(int a,float b)
+{
+	return a+b;
+}
+float sum(float a,int b)
+{
+	return a+b;
+}
+void main()
+{
+	clrscr();
+	cout<<"\n\t Sum 1 :"<<sum(1,2);
+	cout<<"\n\t Sum 2 :"<<sum(1.90f,2.89f);
+	cout<<"\n\t Sum 3 :"<<sum(1,2.88f);
+	cout<<"\n\t Sum 4 :"<<sum(1.34f,2);
+	getch();
+}

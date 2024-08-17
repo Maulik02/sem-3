@@ -1,0 +1,30 @@
+#include<iostream.h>
+#include<conio.h>
+class rectangle
+{
+	private:
+		int lenght;
+		int width;
+	public:
+		void getdata(int a,int b)
+		{
+			lenght=a;
+			width=b;
+		}
+		int area()
+		{
+			return(lenght*width);
+		}
+};
+void main()
+{
+	clrscr();
+	rectangle r1,r2;
+	r1.getdata(10,40);
+	r2.getdata(11,66);
+	int ans;
+	ans=r1.area();
+	cout<<"\n\t Area of Rectagle 1 :"<<ans;
+	cout<<"\n\t Area of Rectagle 2 :"<<r2.area();
+	getch();
+}

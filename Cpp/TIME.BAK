@@ -1,0 +1,30 @@
+/* create a class time that has hh,mm,ss as data mermber.
+create default condtrutor and one member function puttime() to desplay time. */
+#include<iostream.h>
+#include<conio.h>
+class time
+{
+	private:
+		int hh,mm,ss;
+	public:
+		time()
+		{
+			cout<<"\n\tEnter HH:";
+			cin>>hh;
+			cout<<"\n\tEnter MM:";
+			cin>>mm;
+			cout<<"\n\tEnter SS:";
+			cin>>ss;
+		}
+		void puttime()
+		{
+			cout<<"\n\tTime="<<hh<<":"<<mm<<":"<<ss;
+		}
+};
+void main()
+{
+	clrscr();
+	time t1;
+	t1.puttime();
+	getch();
+}

@@ -1,0 +1,3 @@
+/* create a class distance that has feet as data member
+create a constructor that does not grt any arguments to initialize the feet
+as zero */
